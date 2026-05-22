@@ -62,7 +62,7 @@ export default function Navbar() {
       >
         <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between relative">
         <Link to="/" className="font-display font-bold text-2xl tracking-tighter text-primary z-50">
-          {settings?.siteName.split('s')[0] || 'Forge'}<span className="text-tertiary">Labs</span>
+          {settings?.siteName?.split('s')[0] || 'Forge'}<span className="text-tertiary">Labs</span>
         </Link>
 
         {/* Desktop Nav - Centered */}

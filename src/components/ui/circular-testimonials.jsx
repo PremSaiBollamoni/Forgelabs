@@ -178,7 +178,7 @@ export const CircularTestimonials = ({
                 {activeTestimonial.designation}
               </p>
               <motion.p className="quote text-primary" style={{ color: colorTestimony, fontSize: fontSizeQuote }}>
-                {activeTestimonial.quote.split(" ").map((word, i) => (
+                {activeTestimonial.quote?.split(" ")?.map((word, i) => (
                   <motion.span
                     key={i}
                     initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
