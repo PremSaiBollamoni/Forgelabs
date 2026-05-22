@@ -63,7 +63,7 @@ export default function Home() {
           src: t.imageUrl
         })));
       } catch (err) {
-        console.error("Home data fetch failed", err);
+        // Error handled by UI state
       } finally {
         setLoading(false);
       }

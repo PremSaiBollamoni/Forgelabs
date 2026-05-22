@@ -17,7 +17,7 @@ export default function AdminLayout() {
     { label: 'Services', icon: <Info size={20} />, path: '/admin/services' },
     { label: 'Pricing', icon: <Tag size={20} />, path: '/admin/pricing' },
     { label: 'Testimonials', icon: <Quote size={20} />, path: '/admin/testimonials' },
-    { label: 'Inquiries', icon: <MessageSquare size={20} />, path: '/admin/inquiries' },
+    { label: 'Leads', icon: <MessageSquare size={20} />, path: '/admin/inquiries' },
     { label: 'Routes', icon: <Navigation size={20} />, path: '/admin/route-management' },
     { label: 'Settings', icon: <Settings size={20} />, path: '/admin/settings' },
   ];

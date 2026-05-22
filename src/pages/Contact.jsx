@@ -28,6 +28,10 @@ export default function Contact() {
       });
       setStatus('success');
     } catch (err) {
+      console.error('Contact form submission failed:', err);
+      if (err.response) {
+        console.error('Response data:', err.response.data);
+      }
       setError('Something went wrong. Please try again.');
       setStatus('error');
     }

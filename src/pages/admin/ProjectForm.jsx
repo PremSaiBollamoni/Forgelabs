@@ -47,7 +47,7 @@ export default function ProjectForm() {
       const cats = [...new Set(response.data.map(p => p.category))].filter(Boolean);
       setCategories(cats);
     } catch (err) {
-      console.error('Failed to fetch categories');
+      // Error silently handled
     }
   };
 

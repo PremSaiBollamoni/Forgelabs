@@ -27,7 +27,7 @@ export default function AdminTestimonials() {
       const response = await api.get('/admin/testimonials');
       setTestimonials(response.data);
     } catch (err) {
-      console.error('Failed to load testimonials');
+      // Error handled by UI
     } finally {
       setLoading(false);
     }

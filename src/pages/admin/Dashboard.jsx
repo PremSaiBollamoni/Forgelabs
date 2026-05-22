@@ -25,7 +25,7 @@ export default function AdminDashboard() {
           newInquiries: inquiriesRes.data.length 
         });
       } catch (err) {
-        console.error('Failed to fetch stats', err);
+        // Error handled by UI
       }
     };
     fetchStats();

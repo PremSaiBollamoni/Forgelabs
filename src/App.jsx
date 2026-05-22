@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import PortfolioDetail from './pages/PortfolioDetail';
+import BlueprintGenerator from './pages/BlueprintGenerator';
 import Pricing from './pages/Pricing';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -28,6 +29,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 import { ScrollToTop } from './components/ScrollToTop';
 import { SmoothScrolling } from './components/SmoothScrolling';
+import SupportWidget from './components/support/SupportWidget';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -40,6 +42,7 @@ function AnimatedRoutes() {
         <Route path="/services" element={<Services />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/portfolio/:slug" element={<PortfolioDetail />} />
+        <Route path="/blueprint" element={<BlueprintGenerator />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -78,6 +81,7 @@ function MainLayout({ children }) {
       <main className={`flex-grow z-10 relative ${!isAdminPath ? 'mt-24' : ''}`}>
         {children}
       </main>
+      {!isAdminPath && <SupportWidget />}
       {!isAdminPath && <Footer />}
     </div>
   );

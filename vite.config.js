@@ -14,6 +14,18 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // Disable source maps in production — prevents readable code in browser devtools
+    sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        // Strip all console.* calls from production bundles
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+  },
   server: {
     proxy: {
       '/api': {

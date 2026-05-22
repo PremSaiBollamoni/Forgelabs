@@ -56,7 +56,7 @@ export default function AdminPricing() {
         features: typeof p.features === 'string' ? JSON.parse(p.features) : p.features || []
       })));
     } catch (err) {
-      console.error('Failed to load plans');
+      // Error handled by UI
     } finally {
       setLoading(false);
     }

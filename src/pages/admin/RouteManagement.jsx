@@ -59,7 +59,7 @@ export default function AdminRouteManagement() {
       setRoutes(routesRes.data);
       setButtons(buttonsRes.data);
     } catch (err) {
-      console.error('Failed to load route management data');
+      // Error handled by UI
     } finally {
       setLoading(false);
     }

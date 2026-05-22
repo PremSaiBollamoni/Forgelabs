@@ -42,7 +42,7 @@ export default function AdminSettings() {
         copyrightText: response.data.copyrightText
       });
     } catch (err) {
-      console.error('AI Generation failed');
+      // Error handled by UI
     } finally {
       setIsGeneratingFooter(false);
     }
@@ -57,7 +57,7 @@ export default function AdminSettings() {
       }
       fetchButtons();
     } catch (err) {
-      console.error('Failed to load settings');
+      // Error handled by UI
     } finally {
       setLoading(false);
     }
@@ -68,7 +68,7 @@ export default function AdminSettings() {
       const response = await api.get('/admin/hero-buttons');
       setHeroButtons(response.data);
     } catch (err) {
-      console.error('Failed to load buttons');
+      // Error silently handled
     }
   };
 

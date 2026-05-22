@@ -65,7 +65,7 @@ export const DemoBauhaus = ({ projects = [] }) => {
           filledButtonInscription="View Case Study"
           outlinedButtonInscription="Bookmark"
           onFilledButtonClick={() => navigate(`/portfolio/${textileProject.slug}`)}
-          onOutlinedButtonClick={() => console.log('Bookmarked')}
+          onOutlinedButtonClick={() => {}}
           mirrored={false}
           swapButtons={false}
           textColorTop="var(--bauhaus-card-inscription-top)"

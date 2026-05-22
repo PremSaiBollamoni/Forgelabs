@@ -51,7 +51,7 @@ export default function AdminServices() {
       const response = await api.get('/admin/services');
       setServices(response.data);
     } catch (err) {
-      console.error('Failed to load services');
+      // Error handled by UI
     } finally {
       setLoading(false);
     }

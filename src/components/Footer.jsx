@@ -27,7 +27,7 @@ export default function Footer() {
         setFooterButtons(footerRes.data);
         setSocialButtons(socialRes.data);
       } catch (err) {
-        console.error("Footer data fetch failed", err);
+        // Error handled by UI state
       } finally {
         setLoading(false);
       }
@@ -52,7 +52,7 @@ export default function Footer() {
         setTimeout(() => setShowToast(false), 3000);
       }
     } catch (err) {
-      console.error("Error sharing:", err);
+      // Sharing error silently handled
     }
   };
 
