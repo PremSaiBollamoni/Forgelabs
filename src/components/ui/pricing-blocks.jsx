@@ -15,6 +15,12 @@ export function PricingBlocks({ tiers, compact = false }) {
           // Highlight if explicitly marked, OR if it's the middle one in a 3-tier set
           const isFeatured = tier.featured || (tiers.length === 3 && i === 1);
           const rotation = rotations[i] || 0;
+          // Safely normalize features — could be a JSON string, array, or undefined
+          const features = Array.isArray(tier.features)
+            ? tier.features
+            : typeof tier.features === 'string'
+              ? (() => { try { return JSON.parse(tier.features); } catch { return []; } })()
+              : [];
 
           return (
             <motion.div
@@ -47,7 +53,7 @@ export function PricingBlocks({ tiers, compact = false }) {
               <p className="text-sm text-secondary mb-8">{tier.description}</p>
               
               <ul className="mb-6 space-y-3 border-t border-line/40 pt-6">
-                {(compact ? tier.features.slice(0, 5) : tier.features).map((feature, idx) => (
+                {(compact ? features.slice(0, 5) : features).map((feature, idx) => (
                   <li key={idx} className="flex items-start text-sm text-primary">
                     <Check className="mr-3 text-accent shrink-0" size={16} />
                     <span className="line-clamp-1">{feature}</span>
@@ -55,9 +61,9 @@ export function PricingBlocks({ tiers, compact = false }) {
                 ))}
               </ul>
               
-              {compact && tier.features.length > 5 && (
+              {compact && features.length > 5 && (
                 <Link to="/pricing" className="text-[10px] text-accent uppercase font-bold tracking-widest hover:underline mb-4 inline-block">
-                  + {tier.features.length - 5} More Features
+                  + {features.length - 5} More Features
                 </Link>
               )}
               
