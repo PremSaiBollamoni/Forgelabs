@@ -24,8 +24,8 @@ export default function Footer() {
           api.get('/ui-buttons?group=FOOTER_SOCIAL')
         ]);
         setSettings(settingsRes.data);
-        setFooterButtons(footerRes.data);
-        setSocialButtons(socialRes.data);
+        setFooterButtons(Array.isArray(footerRes.data) ? footerRes.data : []);
+        setSocialButtons(Array.isArray(socialRes.data) ? socialRes.data : []);
       } catch (err) {
         // Error handled by UI state
       } finally {
@@ -82,7 +82,7 @@ export default function Footer() {
                   {group === "SERVICES" ? "Services" : "Company"}
                 </h4>
                 <ul className="space-y-5 font-sans text-sm">
-                  {footerButtons
+                  {Array.isArray(footerButtons) && footerButtons
                     .filter(btn => btn.pageKey === group)
                     .map((btn) => (
                       <li key={btn.id}>
@@ -130,7 +130,7 @@ export default function Footer() {
 
             {/* Left: Social Icons */}
             <div className="flex items-center space-x-3">
-              {socialButtons.map((btn) => {
+              {Array.isArray(socialButtons) && socialButtons.map((btn) => {
                 const label = btn.buttonLabel.toLowerCase();
                 const path = btn.route?.routePath || "#";
                 
