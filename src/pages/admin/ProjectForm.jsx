@@ -44,7 +44,8 @@ export default function ProjectForm() {
   const fetchCategories = async () => {
     try {
       const response = await api.get('/admin/projects');
-      const cats = [...new Set(response.data.map(p => p.category))].filter(Boolean);
+      const data = Array.isArray(response.data) ? response.data : [];
+      const cats = [...new Set(data.map(p => p.category))].filter(Boolean);
       setCategories(cats);
     } catch (err) {
       // Error silently handled

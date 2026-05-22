@@ -51,7 +51,8 @@ export default function AdminPricing() {
     try {
       setLoading(true);
       const response = await api.get('/admin/pricing');
-      setPlans(response.data.map(p => ({
+      const data = Array.isArray(response.data) ? response.data : [];
+      setPlans(data.map(p => ({
         ...p,
         features: typeof p.features === 'string' ? JSON.parse(p.features) : p.features || []
       })));

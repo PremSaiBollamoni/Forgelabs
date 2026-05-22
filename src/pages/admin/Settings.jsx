@@ -52,8 +52,9 @@ export default function AdminSettings() {
     try {
       setLoading(true);
       const response = await api.get('/admin/settings');
-      if (response.data.length > 0) {
-        setSettings(response.data[0]);
+      const data = Array.isArray(response.data) ? response.data : [];
+      if (data.length > 0) {
+        setSettings(data[0]);
       }
       fetchButtons();
     } catch (err) {
@@ -66,7 +67,7 @@ export default function AdminSettings() {
   const fetchButtons = async () => {
     try {
       const response = await api.get('/admin/hero-buttons');
-      setHeroButtons(response.data);
+      setHeroButtons(Array.isArray(response.data) ? response.data : []);
     } catch (err) {
       // Error silently handled
     }

@@ -49,7 +49,7 @@ export default function AdminServices() {
     try {
       setLoading(true);
       const response = await api.get('/admin/services');
-      setServices(response.data);
+      setServices(Array.isArray(response.data) ? response.data : []);
     } catch (err) {
       // Error handled by UI
     } finally {

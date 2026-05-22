@@ -19,7 +19,7 @@ export default function AdminProjects() {
     try {
       setLoading(true);
       const response = await api.get('/admin/projects');
-      setProjects(response.data);
+      setProjects(Array.isArray(response.data) ? response.data : []);
     } catch (err) {
       setError('Failed to load projects.');
     } finally {

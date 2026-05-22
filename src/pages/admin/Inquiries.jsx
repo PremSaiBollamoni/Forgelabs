@@ -18,7 +18,7 @@ export default function AdminInquiries() {
     try {
       setLoading(true);
       const response = await api.get('/admin/inquiries');
-      setInquiries(response.data);
+      setInquiries(Array.isArray(response.data) ? response.data : []);
     } catch (err) {
       setError('Failed to load inquiries.');
     } finally {

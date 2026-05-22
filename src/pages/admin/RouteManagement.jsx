@@ -56,8 +56,8 @@ export default function AdminRouteManagement() {
         api.get('/admin/routes'),
         api.get('/admin/ui-buttons')
       ]);
-      setRoutes(routesRes.data);
-      setButtons(buttonsRes.data);
+      setRoutes(Array.isArray(routesRes.data) ? routesRes.data : []);
+      setButtons(Array.isArray(buttonsRes.data) ? buttonsRes.data : []);
     } catch (err) {
       // Error handled by UI
     } finally {

@@ -115,7 +115,7 @@ export default function BlueprintGenerator() {
         budget: formData.budget,
         additionalInfo: formData.additionalInfo
       });
-      setBlueprint(response.data);
+      setBlueprint(response.data || null);
     } catch (err) {
       alert("Failed to generate blueprint. Please try again.");
     } finally {

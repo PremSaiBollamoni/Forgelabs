@@ -25,7 +25,7 @@ export default function AdminTestimonials() {
     try {
       setLoading(true);
       const response = await api.get('/admin/testimonials');
-      setTestimonials(response.data);
+      setTestimonials(Array.isArray(response.data) ? response.data : []);
     } catch (err) {
       // Error handled by UI
     } finally {
