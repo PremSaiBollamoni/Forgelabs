@@ -19,9 +19,9 @@ export default function Portfolio() {
       try {
         setLoading(true);
         const response = await api.get('/projects');
-        const parsedData = response.data.map(p => ({
+        const parsedData = (Array.isArray(response.data) ? response.data : []).map(p => ({
           ...p,
-          stack: typeof p.techStack === 'string' ? JSON.parse(p.techStack) : p.techStack
+          stack: typeof p.techStack === 'string' ? JSON.parse(p.techStack) : (Array.isArray(p.techStack) ? p.techStack : [])
         }));
         setProjects(parsedData);
       } catch (err) {

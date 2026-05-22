@@ -16,9 +16,9 @@ export default function Pricing() {
       try {
         setLoading(true);
         const response = await api.get('/pricing');
-        const parsedData = response.data.map(p => ({
+        const parsedData = (Array.isArray(response.data) ? response.data : []).map(p => ({
           ...p,
-          features: typeof p.features === 'string' ? JSON.parse(p.features) : p.features
+          features: typeof p.features === 'string' ? JSON.parse(p.features) : (Array.isArray(p.features) ? p.features : [])
         }));
         setPlans(parsedData);
       } catch (err) {

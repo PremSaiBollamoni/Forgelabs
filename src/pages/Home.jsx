@@ -46,17 +46,19 @@ export default function Home() {
           api.get('/settings'),
           api.get('/hero-buttons')
         ]);
-        setFaqs(faqsRes.data);
-        setSettings(settingsRes.data);
-        setHeroButtons(buttonsRes.data);
-        setPlans(pricingRes.data.map(p => ({
+        setFaqs(Array.isArray(faqsRes.data) ? faqsRes.data : []);
+        setSettings(Array.isArray(settingsRes.data) ? settingsRes.data[0] : settingsRes.data);
+        setHeroButtons(Array.isArray(buttonsRes.data) ? buttonsRes.data : []);
+        const pricingData = Array.isArray(pricingRes.data) ? pricingRes.data : [];
+        setPlans(pricingData.map(p => ({
           ...p,
           name: p.planName,
           featured: p.isFeatured,
-          features: typeof p.features === 'string' ? JSON.parse(p.features) : p.features
+          features: typeof p.features === 'string' ? JSON.parse(p.features) : (Array.isArray(p.features) ? p.features : [])
         })));
-        setFeaturedProjects(projectsRes.data);
-        setTestimonials(testimonialsRes.data.map(t => ({
+        setFeaturedProjects(Array.isArray(projectsRes.data) ? projectsRes.data : []);
+        const testimonialsData = Array.isArray(testimonialsRes.data) ? testimonialsRes.data : [];
+        setTestimonials(testimonialsData.map(t => ({
           quote: t.quote,
           name: t.name,
           designation: t.designation,
